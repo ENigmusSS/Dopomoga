@@ -1,4 +1,4 @@
-package ua.holovchenko.dopomoga.Entity;
+package ua.holovchenko.dopomoga.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

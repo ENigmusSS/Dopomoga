@@ -1,10 +1,9 @@
-package ua.holovchenko.dopomoga.Entity;
+package ua.holovchenko.dopomoga.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
-import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
