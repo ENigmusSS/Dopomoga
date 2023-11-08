@@ -1,11 +1,10 @@
 package ua.holovchenko.dopomoga.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,9 +13,10 @@ import java.sql.Date;
 @ToString
 @Entity(name = "civil_undercared")
 public class CivilUndercared {
-    @Id
+    @Column(unique = true, nullable = false, updatable = false, name = "passport")
     private String passport;
-    @Column(unique = true, nullable = false, updatable = false, name = "taxpayer_identification_number")
+    @Id
+    @Column(name = "taxpayer_id")
     private String taxpayerID;
     @Column(name = "first_name")
     private String firstName;
@@ -26,30 +26,33 @@ public class CivilUndercared {
     private String lastName;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name = "birth_date")
+    @Column(name = "birthdate")
     private Date birthDate;
     @Column
     private String settlement;
     @Column
     private String address;
-    @Column(name = "is_mobile")
-    private boolean isMobile;
-    @Column(name = "has_caretaker")
-    private boolean hasCaretaker;
-    @Column(name = "is_disabled")
-    private boolean isDisabled;
-    @Column(name = "is_elderly")
-    private boolean isElderly;
-    @Column(name = "has_many_children")
-    private boolean hasManyChildren;
-    @Column(name = "is_incurable")
-    private boolean isIncurable;
-    @Column(name = "is_bedridden")
-    private boolean isBedridden;
-    @Column(name = "is_lonely")
-    private boolean isLonely;
     @Column(name = "last_official_taken_help")
     private Date lastTakenHelp;
+    @Column(name = "is_mobile")
+    private Boolean isMobile;
+    @Column(name = "has_caretaker")
+    private Boolean hasCaretaker;
+    @Column(name = "is_disabled")
+    private Boolean isDisabled;
+    @Column(name = "is_elderly")
+    private Boolean isElderly;
+    @Column(name = "has_many_children")
+    private Boolean hasManyChildren;
+    @Column(name = "is_incurable")
+    private Boolean isIncurable;
+    @Column(name = "is_bedridden")
+    private Boolean isBedridden;
+    @Column(name = "is_lonely")
+    private Boolean isLonely;
 
+    @ToString.Exclude
+    @OneToMany(mappedBy = "requestedBy")
+    private List<CivilRequest> requestList;
 
 }

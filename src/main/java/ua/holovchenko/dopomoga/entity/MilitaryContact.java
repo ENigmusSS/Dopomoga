@@ -23,7 +23,7 @@ public class MilitaryContact {
     private String contact;
     @ToString.Exclude
     @Column(name = "request_list")
-    @OneToMany(mappedBy = "contact", cascade = CascadeType.DETACH)
+    @OneToMany(mappedBy = "contact")
     private List<MilitaryRequest> requestList;
     @Column(name = "comment")
     private String comment;

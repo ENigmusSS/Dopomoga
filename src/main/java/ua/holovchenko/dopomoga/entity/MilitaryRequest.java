@@ -21,7 +21,7 @@ public class MilitaryRequest {
     @ManyToOne
     @JoinColumn(name = "codename")
     private MilitaryContact contact;
-    @Column(name = "recieved_date")
+    @Column(name = "received_date")
     private Date receivedDate;
     @Column(name = "last_changed")
     private Date lastChanged;
@@ -31,8 +31,4 @@ public class MilitaryRequest {
     private String needs;
     @Column
     private String comment;
-
-
-
-
 }

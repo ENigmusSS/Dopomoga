@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Civilian Undercared</title>
+    <style>
+        td {
+            border: solid black;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Taxpayer ID</td>
+        <td><span th:text="${civilUndercared.getTaxpayerID()}"/></td>
+    </tr>
+    <tr>
+        <td>Passport</td>
+        <td><span th:text="${civilUndercared.getPassport()}"/></td>
+    </tr>
+    <tr>
+        <td>First name</td>
+        <td><span th:text="${civilUndercared.getFirstName()}"/></td>
+    </tr>
+    <tr>
+        <td>Middle name (Patronim)</td>
+        <td><span th:text="${civilUndercared.getMiddleName()}"/></td>
+    </tr>
+    <tr>
+        <td>Last name (Familia)</td>
+        <td><span th:text="${civilUndercared.getLastName()}"/></td>
+    </tr>
+    <tr>
+        <td>Phone number</td>
+        <td><span th:text="${civilUndercared.getPhoneNumber()}"/></td>
+    </tr>
+    <tr>
+        <td>Birthdate</td>
+        <td><span th:text="${civilUndercared.getBirthDate()}"/></td>
+    </tr>
+    <tr>
+        <td>Settlement</td>
+        <td><span th:text="${civilUndercared.getSettlement()}"/></td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td><span th:text="${civilUndercared.getAddress()}"/></td>
+    </tr>
+    <tr>
+        <td>Last time officially taken help</td>
+        <td><span th:text="${civilUndercared.getLastTakenHelp()}"/></td>
+    </tr>
+    <tr>
+        <td>Is Mobile</td>
+        <td><span th:text="${civilUndercared.getIsMobile()}"/></td>
+    </tr>
+    <tr>
+        <td>Has Caretaker</td>
+        <td><span th:text="${civilUndercared.getHasCaretaker()}"/></td>
+    </tr>
+    <tr>
+        <td>Is Disabled</td>
+        <td><span th:text="${civilUndercared.getIsDisabled()}"/></td>
+    </tr>
+    <tr>
+        <td>Is Elderly</td>
+        <td><span th:text="${civilUndercared.getIsElderly()}"/></td>
+    </tr>
+    <tr>
+        <td>Has Many children</td>
+        <td><span th:text="${civilUndercared.getHasManyChildren()}"/></td>
+    </tr>
+    <tr>
+        <td>Is Incurable</td>
+        <td><span th:text="${civilUndercared.getIsIncurable()}"/></td>
+    </tr>
+    <tr>
+        <td>Is Bedridden</td>
+        <td><span th:text="${civilUndercared.getIsBedridden()}"/></td>
+    </tr>
+    <tr>
+        <td>Is Lonely</td>
+        <td><span th:text="${civilUndercared.getIsLonely()}"/></td>
+    </tr>
+</table>
+<a th:href="@{'/ui/civil-undercared/'}"><button>To the List</button></a>
+<a th:href="@{'/ui/civil-undercared/{id}/edit' (id = ${civilUndercared.getTaxpayerID()})}"><button>Edit</button></a>
+<a th:href="@{'/ui/civil-request/?requestedById={id}' (id = ${civilUndercared.getTaxpayerID()})}"><button>Requests</button></a>
+</body>
+</html>

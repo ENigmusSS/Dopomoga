@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create/Edit Civilian Undercared</title>
+    <style>
+        td {
+            font-size: x-large;
+        }
+
+    </style>
+</head>
+<body>
+<form th:action="@{edit}" th:object="${civilUndercared}" method="post">
+    <table>
+        <tr>
+            <td><label th:for="taxpayerID">Taxpayer ID:</label></td>
+            <td><input th:id="taxpayerID" type="text" th:field="*{taxpayerID}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="passport">Passport:</label></td>
+            <td><input th:id="passport" type="text" th:field="*{passport}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="firstName">First Name:</label></td>
+            <td><input th:id="firstName" type="text" th:field="*{firstName}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="middleName">Middle Name:</label></td>
+            <td><input th:id="middleName" type="text" th:field="*{middleName}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="lastName">Last Name:</label></td>
+            <td><input th:id="lastName" type="text" th:field="*{lastName}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="phoneNumber">Phone Number:</label></td>
+            <td><input th:id="phoneNumber" type="tel" th:field="*{phoneNumber}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="birthDate">Birth Date:</label></td>
+            <td><input th:id="birthDate" type="date" th:field="*{birthDate}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="settlement">Settlement:</label></td>
+            <td><input th:id="settlement" type="text" th:field="*{settlement}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="address">Address:</label></td>
+            <td><input th:id="address" type="text" th:field="*{address}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="lastTakenHelp">Last time Officially taken Help:</label></td>
+            <td><input th:id="lastTakenHelp" type="date" th:field="*{lastTakenHelp}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="isMobile">Is Mobile:</label></td>
+            <td><input th:id="isMobile" type="checkbox" th:field="*{isMobile}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="hasCaretaker">Has Caretaker:</label></td>
+            <td><input th:id="hasCaretaker" type="checkbox" th:field="*{hasCaretaker}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="isDisabled">IisDisabled:</label></td>
+            <td><input th:id="isDisabled" type="checkbox" th:field="*{isDisabled}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="isElderly">IisElderly:</label></td>
+            <td><input th:id="isElderly" type="checkbox" th:field="*{isElderly}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="hasManyChildren">Has Many Children:</label></td>
+            <td><input th:id="hasManyChildren" type="checkbox" th:field="*{hasManyChildren}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="isIncurable">IisIncurable:</label></td>
+            <td><input th:id="isIncurable" type="checkbox" th:field="*{isIncurable}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="isBedridden">IisBedridden:</label></td>
+            <td><input th:id="isBedridden" type="checkbox" th:field="*{isBedridden}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="isLonely">IisLonely:</label></td>
+            <td><input th:id="isLonely" type="checkbox" th:field="*{isLonely}"></td>
+        </tr>
+        <tr>
+            <td><input type="reset"></td>
+            <td><input type="submit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

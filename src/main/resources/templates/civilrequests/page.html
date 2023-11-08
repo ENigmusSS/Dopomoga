@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Civilian requests</title>
+    <style>
+        td {
+            border: solid black;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+<form method="get">
+    <table>
+        <thead>
+        <tr>
+            <td><input type="reset"></td>
+            <td><label> Requested By:
+                <input type="text" th:id="requestedById">
+            </label></td>
+            <td><label>Page:
+                <input type="number" th:id="page">
+            </label></td>
+            <td><label>Page size:
+                <input type="number" th:id="size">
+            </label></td>
+            <td><label>Status
+                <select name="requestStatus">
+                    <option>PAUSED</option>
+                    <option>QUEUED</option>
+                    <option>INPROGRESS</option>
+                    <option>FORCORRECTION</option>
+                    <option>CROWDFUNDING</option>
+                    <option>ORDERED</option>
+                    <option>FORDELIVERY</option>
+                    <option>REDIRECTED</option>
+                    <option>COMPLITED</option>
+                </select>
+            </label></td>
+            <td><label>Received after:
+                <input type="date" th:id="minReceivedDate">
+            </label></td>
+            <td><label>Received before:
+                <input type="date" th:id="maxReceivedDate">
+            </label></td>
+            <td><label>Last changed after:
+                <input type="date" th:id="minChangedDate">
+            </label></td>
+            <td><label>Last changed before:
+                <input type="date" th:id="maxChangedDate">
+            </label></td>
+            <td><input type="submit"></td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td>requested by:</td>
+            <td colspan="3">needs</td>
+            <td>status</td>
+            <td>received</td>
+            <td>last changed</td>
+            <td colspan="2">comment</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="request : ${civilRequestPage}">
+            <td><a th:href="@{'ui/civil-requests/{id}'(id=${request.getId()})}"><span th:text="${request.getId()}"/></td>
+            <td><span th:text="${request.getRequestedBy()}"/></td>
+            <td colspan="3"><span th:text="${request.getNeeds()}"/></td>
+            <td><span th:text="${request.getStatus()}"/></td>
+            <td><span th:text="${request.getReceivedDate()}"/></td>
+            <td><span th:text="${request.getLastChanged()}"/></td>
+            <td colspan="2"><span th:text="${request.getComment()()}"/></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

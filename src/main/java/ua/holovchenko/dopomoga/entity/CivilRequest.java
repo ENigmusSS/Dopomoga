@@ -17,23 +17,17 @@ public class CivilRequest {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
     private UUID id;
-    @Column
-    private String name;
-    @Column(name = "preferential_category")
-    private String preferentialCategory;
-    @Column(name = "phone_number")
-    private String phoneNumber;
-    @Column
-    private String address;
+    @ManyToOne
+    @JoinColumn(name = "taxpayerID")
+    private CivilUndercared requestedBy;
     @Column
     private String needs;
     @Column
     private RequestStatus status;
-    @Column(name = "recieved_date")
-    private Date recievedDate;
+    @Column(name = "received_date")
+    private Date receivedDate;
     @Column(name = "last_changed")
     private Date lastChanged;
     @Column
     private String comment;
-
 }

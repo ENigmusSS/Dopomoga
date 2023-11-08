@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Civilians Undercared</title>
+    <style>
+        td {
+            border: solid black;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+<form method="get">
+    <table>
+        <thead>
+        <tr>
+            <td>
+                <label> Page:
+                    <input type="number" th:id="page">
+                </label>
+            </td>
+            <td>
+                <label> Page size:
+                    <input type="number" th:id="size">
+                </label>
+            </td>
+            <td>
+                <input type="reset">
+            </td>
+            <td>
+                <input type="submit">
+            </td>
+            <td>
+                Filters:
+            </td>
+            <td>
+                <label> Birthdate after:
+                    <input type="date" th:id="minBirthDate">
+                </label></td>
+            <td>
+                <label> Birthdate before:
+                    <input type="date" th:id="maxBirthdate">
+                </label>
+            </td>
+            <td>
+                <label> Settlement:
+                    <input type="text" th:id="settlement">
+                </label>
+            </td>
+            <td>
+                <label> Taken help after:
+                    <input type="date" th:id="minLastTakenHelp">
+                </label></td>
+            <td>
+                <label> Taken help before:
+                    <input type="date" th:id="maxLastTakenHelp">
+                </label>
+            </td>
+            <td>
+                Is Mobile:
+                <label> all
+                    <input type="radio" th:name="isMobile" th:value="null">
+                </label><br>
+                <label> true
+                    <input type="radio" th:name="isMobile" th:value="true">
+                </label><br>
+                <label> false
+                    <input type="radio" th:name="isMobile" th:value="false">
+                </label><br>
+            </td>
+            <td>
+                Has Caretaker:
+                <label> all
+                    <input type="radio" th:name="hasCaretaker" th:value="null">
+                </label><br>
+                <label> true
+                    <input type="radio" th:name="hasCaretaker" th:value="true">
+                </label><br>
+                <label> false
+                    <input type="radio" th:name="hasCaretaker" th:value="false">
+                </label><br>
+            </td>
+            <td>
+                Is Disabled:
+                <label> all
+                    <input type="radio" th:name="isDisabled" th:value="null">
+                </label><br>
+                <label> true
+                    <input type="radio" th:name="isDisabled" th:value="true">
+                </label><br>
+                <label> false
+                    <input type="radio" th:name="isDisabled" th:value="false">
+                </label><br>
+            </td>
+            <td>
+                Is Elderly:
+                <label> all
+                    <input type="radio" th:name="isElderly" th:value="null">
+                </label><br>
+                <label> true
+                    <input type="radio" th:name="isElderly" th:value="true">
+                </label><br>
+                <label> false
+                    <input type="radio" th:name="isElderly" th:value="false">
+                </label><br>
+            </td>
+            <td>
+                Has Many Children:
+                <label> all
+                    <input type="radio" th:name=hasManyChildren" th:value="null">
+                </label><br>
+                <label> true
+                    <input type="radio" th:name=hasManyChildren" th:value="true">
+                </label><br>
+                <label> false
+                    <input type="radio" th:name=hasManyChildren" th:value="false">
+                </label><br>
+            </td>
+            <td>
+                Is Incurable:
+                <label> all
+                    <input type="radio" th:name="isIncurable" th:value="null">
+                </label><br>
+                <label> true
+                    <input type="radio" th:name="isIncurable" th:value="true">
+                </label><br>
+                <label> false
+                    <input type="radio" th:name="isIncurable" th:value="false">
+                </label><br>
+            </td>
+            <td>
+                Is Bedridden:
+                <label> all
+                    <input type="radio" th:name="isBedridden" th:value="null">
+                </label><br>
+                <label> true
+                    <input type="radio" th:name="isBedridden" th:value="true">
+                </label><br>
+                <label> false
+                    <input type="radio" th:name="isBedridden" th:value="false">
+                </label><br>
+            </td>
+            <td>
+                Is Lonely:
+                <label> all
+                    <input type="radio" th:name="isLonely" th:value="null">
+                </label><br>
+                <label> true
+                    <input type="radio" th:name="isLonely" th:value="true">
+                </label><br>
+                <label> false
+                    <input type="radio" th:name="isLonely" th:value="false">
+                </label><br>
+            </td>
+        </tr>
+        <tr>
+            <td>Taxpayer ID</td>
+            <td>Passport</td>
+            <td>First name</td>
+            <td>Middle name (Patronim)</td>
+            <td>Last name (Familia)</td>
+            <td>Phone number</td>
+            <td>Birthdate</td>
+            <td>Settlement</td>
+            <td>Address</td>
+            <td>Last time officially taken help</td>
+            <td>Is Mobile</td>
+            <td>Has Caretaker</td>
+            <td>Is Disabled</td>
+            <td>Is Elderly</td>
+            <td>Has Many children</td>
+            <td>Is Incurable</td>
+            <td>Is Bedridden</td>
+            <td>Is Lonely</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="civilUndercared : ${civilUndercaredPage}">
+            <td><a th:href="@{'/ui/civil-undercared/{id}'(id=${civilUndercared.getTaxpayerID()})}"> <span th:text="${civilUndercared.getTaxpayerID()}"/></a></td>
+            <td><span th:text="${civilUndercared.getPassport()}"/></td>
+            <td><span th:text="${civilUndercared.getFirstName()}"/></td>
+            <td><span th:text="${civilUndercared.getMiddleName()}"/></td>
+            <td><span th:text="${civilUndercared.getLastName()}"/></td>
+            <td><span th:text="${civilUndercared.getPhoneNumber()}"/></td>
+            <td><span th:text="${civilUndercared.getBirthDate()}"/></td>
+            <td><span th:text="${civilUndercared.getSettlement()}"/></td>
+            <td><span th:text="${civilUndercared.getAddress()}"/></td>
+            <td><span th:text="${civilUndercared.getLastTakenHelp()}"/></td>
+            <td><span th:text="${civilUndercared.getIsMobile()}"/></td>
+            <td><span th:text="${civilUndercared.getHasCaretaker()}"/></td>
+            <td><span th:text="${civilUndercared.getIsDisabled()}"/></td>
+            <td><span th:text="${civilUndercared.getIsElderly()}"/></td>
+            <td><span th:text="${civilUndercared.getHasManyChildren()}"/></td>
+            <td><span th:text="${civilUndercared.getIsIncurable()}"/></td>
+            <td><span th:text="${civilUndercared.getIsBedridden()}"/></td>
+            <td><span th:text="${civilUndercared.getIsLonely()}"/></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<footer>
+    <a th:href="@{'/ui/civil-undercared/new'}" th:method="get"><button>Register new</button></a>
+    <a th:href="@{'/ui/civil-requests/'}"><button>Requests</button></a>
+</footer>
+</body>
+</html>
