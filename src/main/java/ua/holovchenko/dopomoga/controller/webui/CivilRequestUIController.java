@@ -79,7 +79,9 @@ public class CivilRequestUIController {
     @GetMapping("/{id}/edit")
     public String editCivilRequestForm(@PathVariable String id, Model model) {
         try {
-            model.addAttribute("civilRequest", civilRequestService.getCivilRequestByID(id));
+            CivilRequest civilRequest = civilRequestService.getCivilRequestByID(id);
+            model.addAttribute("civilRequest", civilRequest);
+            model.addAttribute("requestedBy", civilRequest.getRequestedBy().getTaxpayerID());
             return "/civilrequests/edit";
         } catch (NoSuchElementException e) {
             return "/civilrequests/notfound";
@@ -87,7 +89,8 @@ public class CivilRequestUIController {
     }
 
     @PostMapping("/{id}/edit")
-    public String editCivilRequest(@PathVariable String id, @ModelAttribute CivilRequest civilRequest, Model model) {
+    public String editCivilRequest(@PathVariable String id, @ModelAttribute CivilRequest civilRequest, @ModelAttribute String requestedBy, Model model) {
+        civilRequest.setRequestedBy(civilUndercaredService.getCivilUndercaredByTaxpayerId(requestedBy));
         model.addAttribute("civilRequest", civilRequestService.saveCivilRequest(civilRequest));
         return "/civilrequests/one";
     }
@@ -95,11 +98,13 @@ public class CivilRequestUIController {
     @GetMapping("/new")
     public String createCivilRequestForm(Model model) {
         model.addAttribute("civilRequest", new CivilRequest());
+        model.addAttribute("requestedBy", "");
         return "civilrequests/create";
     }
 
     @PostMapping("/new")
-    public String createCivilRequest(@ModelAttribute CivilRequest civilRequest, Model model) {
+    public String createCivilRequest(@ModelAttribute CivilRequest civilRequest, @ModelAttribute String requestedBy, Model model) {
+        civilRequest.setRequestedBy(civilUndercaredService.getCivilUndercaredByTaxpayerId(requestedBy));
         model.addAttribute("civilRequest", civilRequestService.saveCivilRequest(civilRequest));
         return "civilrequests/one";
     }

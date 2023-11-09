@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Civilian request</title>
+    <style>
+        td {
+            border: solid black;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td>ID:</td>
+        <td><span th:text="${civilRequest.getId()}"/></td>
+    </tr>
+    <tr>
+        <td>Requested by:</td>
+        <td>
+            <a th:href="@{'/ui/civil-undercared/{requested}'
+            (requested = ${civilRequest.getRequestedBy().getTaxpayerID()})}">
+                <span th:text="${civilRequest.getRequestedBy().getTaxpayerID()}"/></a>
+        </td>
+    </tr>
+    <tr>
+        <td>Needs:</td>
+        <td><span th:text="${civilRequest.getNeeds()}"/></td>
+    </tr>
+    <tr>
+        <td>Status:</td>
+        <td><span th:text="${civilRequest.getStatus()}"/></td>
+    </tr>
+    <tr>
+        <td>Date received:</td>
+        <td><span th:text="${civilRequest.getReceivedDate()}"/></td>
+    </tr>
+    <tr>
+        <td>Date last changed:</td>
+        <td><span th:text="${civilRequest.getLastChanged()}"/></td>
+    </tr>
+    <tr>
+        <td>Comment:</td>
+        <td><span th:text="${civilRequest.getComment()}"/></td>
+    </tr>
+</table>
+<a th:href="@{'/ui/civil-requests'}"><button>To the list</button></a>
+<a th:href="@{'/ui/civil-requests/{id}/edit' (id = ${civilRequest.getId()})}"><button>Edit</button></a>
+<a th:href="@{'/ui/civil-undercared/{id}' (id = ${civilRequest.getRequestedBy().getTaxpayerID()})}"><button>Requested By</button></a>
+</body>
+</html>

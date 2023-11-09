@@ -24,7 +24,7 @@ public class CivilUndercaredUIController {
         this.civilUndercaredService = civilUndercaredService;
     }
 
-    @GetMapping("")
+    @GetMapping
     public String getCivilUndercaredPage(Model model,
                                          @RequestParam(required = false) int page,
                                          @RequestParam(required = false) int size,

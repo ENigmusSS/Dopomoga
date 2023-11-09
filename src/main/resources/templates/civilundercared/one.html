@@ -85,7 +85,7 @@
         <td><span th:text="${civilUndercared.getIsLonely()}"/></td>
     </tr>
 </table>
-<a th:href="@{'/ui/civil-undercared/'}"><button>To the List</button></a>
+<a th:href="@{'/ui/civil-undercared'}"><button>To the List</button></a>
 <a th:href="@{'/ui/civil-undercared/{id}/edit' (id = ${civilUndercared.getTaxpayerID()})}"><button>Edit</button></a>
 <a th:href="@{'/ui/civil-request/?requestedById={id}' (id = ${civilUndercared.getTaxpayerID()})}"><button>Requests</button></a>
 </body>

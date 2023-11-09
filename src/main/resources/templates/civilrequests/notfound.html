@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
     <title>Civilian request not found</title>
 </head>
 <body>
 <h2>Civilian request with such identifier not found</h2>
-<a href="/ui/civil-requests/new">Create new</a>
-<a href="/ui/civil-requests/">To the list</a>
+<a th:href="@{'/ui/civil-requests/new'}"><button>Create new</button></a>
+<a th:href="@{'/ui/civil-requests/'}"><button>To the list</button></a>
 </body>
 </html>

@@ -65,7 +65,7 @@
         <tbody>
         <tr th:each="request : ${civilRequestPage}">
             <td><a th:href="@{'ui/civil-requests/{id}'(id=${request.getId()})}"><span th:text="${request.getId()}"/></td>
-            <td><span th:text="${request.getRequestedBy()}"/></td>
+            <td><a th:href="@{'ui/civil-undercared/{requested}' (requested=${request.getRequestedBy().getTaxpayerID()})}" <span th:text="${request.getRequestedBy().getTaxpayerID()}"/></td>
             <td colspan="3"><span th:text="${request.getNeeds()}"/></td>
             <td><span th:text="${request.getStatus()}"/></td>
             <td><span th:text="${request.getReceivedDate()}"/></td>
@@ -75,5 +75,9 @@
         </tbody>
     </table>
 </form>
+<footer>
+    <a th:href="@{'ui/civil-requests/new'}"><button>Register new</button></a>
+    <a th:href="@{'ui/civil-undercared'}"><button>Civilians undercared</button></a>
+</footer>
 </body>
 </html>

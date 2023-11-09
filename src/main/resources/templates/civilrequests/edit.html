@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit civil request</title>
+</head>
+<body>
+<form th:action="@{edit}" th:object="${civilRequest}" method="post">
+    <input type="hidden" th:id="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td><label th:for="requestedBy">Requested By:</label></td>
+            <td><input th:id="requestedBy" type="text" th:field="${requestedBy}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="needs">Needs:</label></td>
+            <td><textarea cols="50" rows="20" th:id="needs" th:field="*{needs}">
+            </textarea></td>
+        </tr>
+        <tr>
+            <td><label th:for="status">Status:</label></td>
+            <td><select th:id="status" th:field="*{status}">
+                <option>PAUSED</option>
+                <option>QUEUED</option>
+                <option>INPROGRESS</option>
+                <option>FORCORRECTION</option>
+                <option>CROWDFUNDING</option>
+                <option>ORDERED</option>
+                <option>FORDELIVERY</option>
+                <option>REDIRECTED</option>
+                <option>COMPLITED</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><label th:for="receivedDate">Date received:</label></td>
+            <td><input th:id="receivedDate" type="date" th:field="*{receivedDate}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="lastChanged">Date last changed:</label></td>
+            <td><input th:id="lastChanged" type="date" th:field="*{lastChanged}"></td>
+        </tr>
+        <tr>
+            <td><label th:for="comment">Comment:</label></td>
+            <td><textarea cols="50" rows="10" th:id="comment" th:field="*{comment}"></textarea></td>
+        </tr>
+        <tr>
+            <td><input type="reset"></td>
+            <td><input type="submit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
