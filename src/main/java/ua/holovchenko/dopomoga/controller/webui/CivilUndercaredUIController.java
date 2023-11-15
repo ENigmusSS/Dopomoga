@@ -26,8 +26,8 @@ public class CivilUndercaredUIController {
 
     @GetMapping
     public String getCivilUndercaredPage(Model model,
-                                         @RequestParam(required = false) int page,
-                                         @RequestParam(required = false) int size,
+                                         @RequestParam(required = false) Integer page,
+                                         @RequestParam(required = false) Integer size,
                                          @RequestParam(required = false) String settlement,
                                          @RequestParam(required = false) Boolean isMobile,
                                          @RequestParam(required = false) Boolean hasCaretaker,
@@ -37,15 +37,15 @@ public class CivilUndercaredUIController {
                                          @RequestParam(required = false) Boolean isIncurable,
                                          @RequestParam(required = false) Boolean isBedridden,
                                          @RequestParam(required = false) Boolean isLonely,
-                                         @RequestParam(required = false) Date minBirthDate,
-                                         @RequestParam(required = false) Date maxBirthDate,
-                                         @RequestParam(required = false) Date minLastTakenHelp,
-                                         @RequestParam(required = false) Date maxLastTakenHelp) {
+                                         @RequestParam(required = false) String minBirthDate,
+                                         @RequestParam(required = false) String maxBirthDate,
+                                         @RequestParam(required = false) String minLastTakenHelp,
+                                         @RequestParam(required = false) String maxLastTakenHelp) {
         List<Filter> filters = new ArrayList<>();
         List<DateFilter> dateLessThanList = new ArrayList<>();
         List<DateFilter> dateGreaterThanList = new ArrayList<>();
 
-        if (settlement != null) {
+        if (settlement != null && !settlement.isEmpty()) {
             filters.add(new Filter("settlement", settlement));
         }
         if (isMobile != null) {
@@ -72,17 +72,17 @@ public class CivilUndercaredUIController {
         if (isLonely != null) {
             filters.add(new Filter("isLonely", isLonely));
         }
-        if (maxBirthDate != null) {
-            dateLessThanList.add(new DateFilter("birthDate", maxBirthDate));
+        if (maxBirthDate != null && !maxBirthDate.isEmpty()) {
+            dateLessThanList.add(new DateFilter("birthDate", Date.valueOf(maxBirthDate)));
         }
-        if (maxLastTakenHelp != null) {
-            dateLessThanList.add(new DateFilter("lastTakenHelp", maxLastTakenHelp));
+        if (maxLastTakenHelp != null && !maxLastTakenHelp.isEmpty()) {
+            dateLessThanList.add(new DateFilter("lastTakenHelp", Date.valueOf(maxLastTakenHelp)));
         }
-        if (minBirthDate != null) {
-            dateGreaterThanList.add(new DateFilter("birthDate", minBirthDate));
+        if (minBirthDate != null && !minBirthDate.isEmpty()) {
+            dateGreaterThanList.add(new DateFilter("birthDate", Date.valueOf(minBirthDate)));
         }
-        if (minLastTakenHelp != null) {
-            dateGreaterThanList.add(new DateFilter("lastTakenHelp", minLastTakenHelp));
+        if (minLastTakenHelp != null && !minLastTakenHelp.isEmpty()) {
+            dateGreaterThanList.add(new DateFilter("lastTakenHelp", Date.valueOf(minLastTakenHelp)));
         }
 
         model.addAttribute("civilUndercaredPage", civilUndercaredService

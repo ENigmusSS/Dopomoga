@@ -9,7 +9,7 @@
     <table>
         <tr>
             <td><label th:for="requestedBy">Requested By:</label></td>
-            <td><input th:id="requestedBy" type="text" th:field="${requestedBy}"></td>
+            <td><input th:id="requestedBy" type="text" th:field="*{requestedBy}"></td>
         </tr>
         <tr>
             <td><label th:for="needs">Needs:</label></td>
@@ -18,15 +18,15 @@
         <tr>
             <td><label th:for="status">Status:</label></td>
             <td><select th:id="status" th:field="*{status}">
-                <option>PAUSED</option>
-                <option>QUEUED</option>
-                <option>INPROGRESS</option>
-                <option>FORCORRECTION</option>
-                <option>CROWDFUNDING</option>
-                <option>ORDERED</option>
-                <option>FORDELIVERY</option>
-                <option>REDIRECTED</option>
-                <option>COMPLITED</option>
+                <option th:value="${statuses.PAUSED}">PAUSED</option>
+                <option th:value="${statuses.QUEUED}">QUEUED</option>
+                <option th:value="${statuses.INPROGRESS}">INPROGRESS</option>
+                <option th:value="${statuses.FORCORRECTION}">FORCORRECTION</option>
+                <option th:value="${statuses.CROWDFUNDING}">CROWDFUNDING</option>
+                <option th:value="${statuses.ORDERED}">ORDERED</option>
+                <option th:value="${statuses.FORDELIVERY}">FORDELIVERY</option>
+                <option th:value="${statuses.REDIRECTED}">REDIRECTED</option>
+                <option th:value="${statuses.COMPLITED}">COMPLITED</option>
             </select></td>
         </tr>
         <tr>

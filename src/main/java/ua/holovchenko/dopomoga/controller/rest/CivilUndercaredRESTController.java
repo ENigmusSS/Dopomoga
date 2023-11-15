@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/rest/civilundercared")
+@RequestMapping("/rest/civil-undercared")
 public class CivilUndercaredRESTController {
     private final CivilUndercaredService civilUndercaredService;
 
@@ -33,8 +33,8 @@ public class CivilUndercaredRESTController {
             @RequestBody List<Filter> filters,
             @RequestBody List<DateFilter> dateLessThanList,
             @RequestBody List<DateFilter> dateGreaterThanList,
-            @RequestParam(required = false) int page,
-            @RequestParam(required = false) int size) {
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) Integer size) {
         return ResponseEntity.ok().body(civilUndercaredService
                 .getCivilUndercaredPage(filters, dateLessThanList, dateGreaterThanList, page, size));
     }

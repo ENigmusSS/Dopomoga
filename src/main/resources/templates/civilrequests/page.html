@@ -17,16 +17,17 @@
         <tr>
             <td><input type="reset"></td>
             <td><label> Requested By:
-                <input type="text" th:id="requestedById">
+                <input type="text" th:name="requestedById">
             </label></td>
             <td><label>Page:
-                <input type="number" th:id="page">
+                <input type="number" th:name="page">
             </label></td>
             <td><label>Page size:
-                <input type="number" th:id="size">
+                <input type="number" th:name="size">
             </label></td>
             <td><label>Status
                 <select name="requestStatus">
+                    <option>ANY</option>
                     <option>PAUSED</option>
                     <option>QUEUED</option>
                     <option>INPROGRESS</option>
@@ -39,16 +40,16 @@
                 </select>
             </label></td>
             <td><label>Received after:
-                <input type="date" th:id="minReceivedDate">
+                <input type="date" th:name="minReceivedDate">
             </label></td>
             <td><label>Received before:
-                <input type="date" th:id="maxReceivedDate">
+                <input type="date" th:name="maxReceivedDate">
             </label></td>
             <td><label>Last changed after:
-                <input type="date" th:id="minChangedDate">
+                <input type="date" th:name="minChangedDate">
             </label></td>
             <td><label>Last changed before:
-                <input type="date" th:id="maxChangedDate">
+                <input type="date" th:name="maxChangedDate">
             </label></td>
             <td><input type="submit"></td>
         </tr>
@@ -64,20 +65,21 @@
         </thead>
         <tbody>
         <tr th:each="request : ${civilRequestPage}">
-            <td><a th:href="@{'ui/civil-requests/{id}'(id=${request.getId()})}"><span th:text="${request.getId()}"/></td>
-            <td><a th:href="@{'ui/civil-undercared/{requested}' (requested=${request.getRequestedBy().getTaxpayerID()})}" <span th:text="${request.getRequestedBy().getTaxpayerID()}"/></td>
+            <td><a th:href="@{'/ui/civil-requests/{id}'(id=${request.getId()})}"><span th:text="${request.getId()}"/></a></td>
+            <td><a th:href="@{'/ui/civil-undercared/{requested}' (requested=${request.getRequestedBy().getTaxpayerID()})}"><span th:text="${request.getRequestedBy().getTaxpayerID()}"/></a></td>
             <td colspan="3"><span th:text="${request.getNeeds()}"/></td>
             <td><span th:text="${request.getStatus()}"/></td>
             <td><span th:text="${request.getReceivedDate()}"/></td>
             <td><span th:text="${request.getLastChanged()}"/></td>
-            <td colspan="2"><span th:text="${request.getComment()()}"/></td>
+            <td colspan="2"><span th:text="${request.getComment()}"/></td>
         </tr>
         </tbody>
     </table>
 </form>
 <footer>
-    <a th:href="@{'ui/civil-requests/new'}"><button>Register new</button></a>
-    <a th:href="@{'ui/civil-undercared'}"><button>Civilians undercared</button></a>
+    <a th:href="@{'/ui/civil-requests/new'}"><button>Register new</button></a>
+    <a th:href="@{'/ui/civil-undercared'}"><button>Civilians undercared</button></a>
+    <a th:href="@{'/logout'}"><button>Logout</button></a>
 </footer>
 </body>
 </html>

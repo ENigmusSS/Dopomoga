@@ -28,12 +28,12 @@ public class CivilUndercaredService {
     public Page<CivilUndercared> getCivilUndercaredPage(List<Filter> filterList,
                                                         List<DateFilter> dateLessThanList,
                                                         List<DateFilter> dateGreaterThanList,
-                                                        int page,
-                                                        int size) {
-        if (page < 1)
+                                                        Integer page,
+                                                        Integer size) {
+        if (page == null || page < 1)
             page = 1;
 
-        if (size < 1)
+        if (size == null || size < 1)
             size = 10;
         Pageable pageable = PageRequest.of(page - 1, size);
         return repo.findAll(spec.columnEqual(filterList)

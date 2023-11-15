@@ -17,12 +17,12 @@
         <tr>
             <td>
                 <label> Page:
-                    <input type="number" th:id="page">
+                    <input type="number" th:name="page">
                 </label>
             </td>
             <td>
                 <label> Page size:
-                    <input type="number" th:id="size">
+                    <input type="number" th:name="size">
                 </label>
             </td>
             <td>
@@ -36,25 +36,25 @@
             </td>
             <td>
                 <label> Birthdate after:
-                    <input type="date" th:id="minBirthDate">
+                    <input type="date" th:name="minBirthDate">
                 </label></td>
             <td>
                 <label> Birthdate before:
-                    <input type="date" th:id="maxBirthdate">
+                    <input type="date" th:name="maxBirthdate">
                 </label>
             </td>
             <td>
                 <label> Settlement:
-                    <input type="text" th:id="settlement">
+                    <input type="text" th:name="settlement">
                 </label>
             </td>
             <td>
                 <label> Taken help after:
-                    <input type="date" th:id="minLastTakenHelp">
+                    <input type="date" th:name="minLastTakenHelp">
                 </label></td>
             <td>
                 <label> Taken help before:
-                    <input type="date" th:id="maxLastTakenHelp">
+                    <input type="date" th:name="maxLastTakenHelp">
                 </label>
             </td>
             <td>
@@ -108,13 +108,13 @@
             <td>
                 Has Many Children:
                 <label> all
-                    <input type="radio" th:name=hasManyChildren" th:value="null">
+                    <input type="radio" th:name="hasManyChildren" th:value="null">
                 </label><br>
                 <label> true
-                    <input type="radio" th:name=hasManyChildren" th:value="true">
+                    <input type="radio" th:name="hasManyChildren" th:value="true">
                 </label><br>
                 <label> false
-                    <input type="radio" th:name=hasManyChildren" th:value="false">
+                    <input type="radio" th:name="hasManyChildren" th:value="false">
                 </label><br>
             </td>
             <td>
@@ -201,7 +201,8 @@
 </form>
 <footer>
     <a th:href="@{'/ui/civil-undercared/new'}" th:method="get"><button>Register new</button></a>
-    <a th:href="@{'/ui/civil-requests/'}"><button>Requests</button></a>
+    <a th:href="@{'/ui/civil-requests'}"><button>Requests</button></a>
+    <a th:href="@{'/logout'}"><button>Logout</button></a>
 </footer>
 </body>
 </html>

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/rest/civilrequests")
+@RequestMapping("/rest/civil-requests")
 public class CivilRequestRESTController {
 
     private final CivilRequestService civilRequestService;
@@ -25,7 +25,8 @@ public class CivilRequestRESTController {
     }
 
     @GetMapping("")
-    public ResponseEntity<Page<CivilRequest>> getCivilRequestPage(@RequestParam(required = false) int page, @RequestParam(required = false) int size) {
+    public ResponseEntity<Page<CivilRequest>> getCivilRequestPage(@RequestParam(required = false) Integer page,
+                                                                  @RequestParam(required = false) Integer size) {
         return ResponseEntity.ok().body(civilRequestService.getCivilRequestPage(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), page, size));
     }
 
@@ -34,8 +35,8 @@ public class CivilRequestRESTController {
             @RequestBody List<Filter> filters,
             @RequestBody List<DateFilter> dateLessThanList,
             @RequestBody List<DateFilter> dateGreaterThanList,
-            @RequestParam(required = false) int page,
-            @RequestParam(required = false) int size) {
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) Integer size) {
         return ResponseEntity.ok().body(civilRequestService
                 .getCivilRequestPage(filters, dateLessThanList, dateGreaterThanList, page, size));
     }
